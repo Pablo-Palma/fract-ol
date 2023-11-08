@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 22:12:16 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 13:39:21 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:31:39 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -21,6 +21,8 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 #define MAX_ITER 60
+
+#define KEY_ESC 53
 
 typedef struct s_fractal t_fractal; // Forward declaration.
 
@@ -60,6 +62,14 @@ void	draw_fractal(t_fractal *fractal, t_graph *graph);
 
 int	select_fractal(char *name, t_fractal *fractal);
 void	help_message(void);
+
+//###   setup   ###//
+void	init_img(t_graph *graph);
+int	setup_gui(t_graph *graph);
+void cleanup(t_graph *graph);
+
+//###   events   ###//
+void setup_hooks(t_graph *graph);
 
 #endif
 

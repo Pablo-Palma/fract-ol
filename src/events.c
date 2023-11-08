@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 10:53:36 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:33:54 by pabpalma         ###   ########.fr       */
+/*   Created: 2023/11/08 16:23:46 by pabpalma          #+#    #+#             */
+/*   Updated: 2023/11/08 16:32:03 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+int	handle_key_press(int keycode, t_graph *graph)
 {
-	t_fractal	fractal;
-	t_graph		graph;
+	if (keycode == KEY_ESC)
+		cleanup(graph);
+	return (0);
+}
 
-	if (setup_gui(&graph) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (argc == 2 && select_fractal(argv[1], &fractal))
-	{
-		draw_fractal(&fractal, &graph);
-		mlx_put_image_to_window(graph.mlx, graph.win, graph.img, 0, 0);
-		setup_hooks(&graph);
-		mlx_loop(graph.mlx);
-	}
-	else
-		help_message();
-//	cleanup(&graph);
-
-	return (EXIT_SUCCESS);
+void setup_hooks(t_graph *graph)
+{
+	mlx_hook(graph->win, 2, 1L<<0, handle_key_press, graph);
 }
 

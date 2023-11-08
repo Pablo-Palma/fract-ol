@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:12:55 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 13:39:14 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:50:00 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	help_message(void)
 {
-	ft_printf("Usage: ./fractol [Mandelbrot/Julia]\n");
+	ft_printf("\nWelcome to Fract'ol\n\n");
+	ft_printf("Usage: ./fractol <fractal name>\n");
+	ft_printf("Options:\n");
+	ft_printf("\t - Mandelbrot\n");
+    ft_printf("\t - Julia\n");
+	ft_printf("Controls:\n");
+	ft_printf("  - ESC: Exit.\n\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -32,7 +38,7 @@ int	select_fractal(char *name, t_fractal *fractal)
 	}
 	else
 	{
-		ft_printf("Usage: ./fractol[Mandlebrot/Julia]\n");
+		help_message();
 		return (0);
 	}
 }
