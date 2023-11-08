@@ -1,53 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 08:45:18 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:29:50 by pabpalma         ###   ########.fr       */
+/*   Created: 2023/11/07 18:04:44 by pabpalma          #+#    #+#             */
+/*   Updated: 2023/11/08 12:27:03 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_mandelbrot(t_fractal *fractal)
+void	init_julia(t_fractal *fractal)
 {
 	fractal->min_re = -2.0;
-	fractal->max_re = 1.0;
-	fractal->min_im = -1.5;
-	fractal->max_im = 1.5;
+	fractal->max_re = 2.0;
+	fractal->min_im = -2.0;
+	fractal->max_im = 2.0;
 	fractal->max_iter = MAX_ITER;
-	fractal->calculate_fractal = calculate_mandelbrot;
+	fractal->calculate_fractal = calculate_julia;
+	fractal->julia_const_re = -0.7;
+	fractal->julia_const_im = 0.27015;
 }
 
-int	calculate_mandelbrot(double re, double im, t_fractal *fractal)
+int	calculate_julia(double re, double im, t_fractal *fractal)
 {
 	int		i;
 	double	new_re;
 	double	new_im;
 	double	old_re;
 	double	old_im;
-	double	pr;
-	double	pi;
 
 	i = 0;
-	old_re = 0;
-	old_im = 0;
-	new_re = 0;
-	new_im = 0;
-	pr = re;
-	pi = im;
+	new_re = re;
+	new_im = im;
 	while (i < fractal->max_iter)
 	{
 		old_re = new_re;
 		old_im = new_im;
-		new_re = old_re * old_re - old_im *old_im + pr;
-		new_im = 2 * old_re * old_im + pi;
+		new_re = old_re * old_re - old_im * old_im + fractal->julia_const_re;
+		new_im = 2 *old_re * old_im  + fractal->julia_const_im;
 		if ((new_re * new_re + new_im * new_im) > 4)
 			break;
-				i++;
+		i++;
 	}
 	return (i);
 }

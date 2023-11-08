@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:53:36 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/07 10:20:03 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:39:58 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_img(t_graph *graph)
 					&(graph->line_lenght), &(graph->endian));
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 	t_graph		graph;
@@ -46,10 +46,14 @@ int	main(void)
 	if (!graph.win)
 		return (EXIT_FAILURE);
 	init_img(&graph);
-	init_mandelbrot(&fractal);
-	draw_fractal(&fractal, &graph);
-	mlx_put_image_to_window(graph.mlx, graph.win, graph.img, 0, 0);
-	mlx_loop(graph.mlx);
+	if (argc == 2 && select_fractal(argv[1], &fractal))
+	{
+		draw_fractal(&fractal, &graph);
+		mlx_put_image_to_window(graph.mlx, graph.win, graph.img, 0, 0);
+		mlx_loop(graph.mlx);
+	}
+	else
+		help_message();
 //	cleanup(&graph);
 
 	return (EXIT_SUCCESS);

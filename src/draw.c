@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:46:45 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/07 17:29:48 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:24:40 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	draw_fractal(t_fractal *fractal, t_graph *graph)
 			re = fractal->min_re + (fractal->max_re - fractal->min_re) * x / WIN_WIDTH;
 			im = fractal->min_im + (fractal->max_im - fractal->min_im) * y / WIN_HEIGHT;
 
-			iter = fractal->calculate_fractal(re, im, fractal->max_iter);
+			iter = fractal->calculate_fractal(re, im, fractal);
 			color = get_color(iter, fractal->max_iter);
 
 			put_pixel_to_image(graph, x, y, color);
