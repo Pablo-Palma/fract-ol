@@ -6,7 +6,8 @@ SRCS_DIR = src
 OBJS_DIR = obj
 LIBFT_DIR = inc/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS_FILES = main.c draw.c mandelbrot.c julia.c parse_args.c setup.c events.c
+SRCS_FILES = main.c draw.c mandelbrot.c julia.c parse_args.c setup.c events.c \
+				burning_ship.c
 SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit

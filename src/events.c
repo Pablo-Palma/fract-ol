@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:23:46 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 10:27:38 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:50:53 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ int	handle_mouse_scroll(int button, int x, int y, t_graph *graph)
 	double mouse_im; 
 
 	fractal = graph->fractal;
-	mouse_re = (double)x / (WIN_WIDTH / (fractal->max_re - fractal->min_re)    ) + fractal->min_re;
-	mouse_im = (double)y / (WIN_HEIGHT / (fractal->max_im - fractal->min_im    )) + fractal->min_im;
+	mouse_re = (double)x / (WIN_WIDTH / (fractal->max_re - fractal->min_re))
+		+ fractal->min_re;
+	mouse_im = (double)y / (WIN_HEIGHT / (fractal->max_im - fractal->min_im))
+		+ fractal->min_im;
 	if (button == 4)
 	{
 		fractal->min_re = mouse_re + (fractal->min_re - mouse_re) / zoom_factor;

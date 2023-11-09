@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:12:55 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 13:07:30 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:30:56 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void help_message(void)
     ft_printf("Options:\n");
     ft_printf("\t - Mandelbrot: Explore the famous Mandelbrot Set\n");
     ft_printf("\t - Julia: Dive into the mesmerizing Julia Sets with optional parameters\n");
+    ft_printf("\t - Burning_ship: Take the helm in this sea of flames\n");
     ft_printf("\n");
     ft_printf("Examples of Julia Sets:\n");
     ft_printf(" +------------------+---------------------------------+\n");
@@ -46,13 +47,10 @@ void help_message(void)
     ft_printf(" +------------------+---------------------------------+\n");
     ft_printf(" | 0.355 0.355      | A Spiral Galaxy                 |\n");
     ft_printf(" +------------------+---------------------------------+\n");
-    ft_printf(" | -0.038088 0.9754633 | A Cosmic Flower              |\n");
-    ft_printf(" +------------------+---------------------------------+\n");
     ft_printf("\nControls:\n");
     ft_printf("  - ESC: Exit.\n");
     ft_printf("  - Arrow keys: Move around the fractal.\n");
-    ft_printf("  - Plus/Minus keys: Zoom in and out.\n");
-    ft_printf("  - Spacebar: Pause to explore current Julia set.\n");
+    ft_printf("  - Mouse scroll: Zoom in and out.\n");
     ft_printf("\nHappy Fractal Exploring!\n\n");
     exit(EXIT_FAILURE);
 }
@@ -67,6 +65,11 @@ int	select_fractal(char *name, t_fractal *fractal)
 	else if (ft_strncmp(name, "Julia", 5) == 0)
 	{
 		init_julia(fractal);
+		return (1);
+	}
+	else if (ft_strncmp(name, "Burning_ship", 12) == 0)
+	{
+		init_burning_ship(fractal);
 		return (1);
 	}
 	else

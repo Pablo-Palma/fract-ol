@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 22:12:16 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 12:32:55 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:16:11 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -60,11 +60,17 @@ typedef struct s_fractal
 	t_fractal_func calculate_fractal;
 }			t_fractal;
 
+///###   Mandelbrot_set   ###////
 void	init_mandelbrot(t_fractal *fractal);
 int calculate_mandelbrot(double re, double im, t_fractal *fractal);
 
+///###   Julia's_set   ###////
 void	init_julia(t_fractal *fractal);
 int	calculate_julia(double re, double im, t_fractal *fractal);
+
+///###   Burning_ship_set   ###////
+void	init_burning_ship(t_fractal *fractal);
+int	calculate_burning_ship(double re, double im, t_fractal *fractal);
 
 void	draw_fractal(t_fractal *fractal, t_graph *graph);
 
