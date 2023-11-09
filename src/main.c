@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:53:36 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:33:54 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:37:42 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 
 	if (setup_gui(&graph) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	graph.fractal = &fractal;
 	if (argc == 2 && select_fractal(argv[1], &fractal))
 	{
 		draw_fractal(&fractal, &graph);

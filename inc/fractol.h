@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 22:12:16 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:31:39 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:21:49 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -23,6 +23,12 @@
 #define MAX_ITER 60
 
 #define KEY_ESC 53
+#define KEY_UP 126
+#define KEY_DOWN 125
+#define KEY_LEFT 123
+#define KEY_RIGHT 124
+
+#define ITER_ADJ_FACTOR 100
 
 typedef struct s_fractal t_fractal; // Forward declaration.
 
@@ -38,6 +44,7 @@ typedef struct s_graph
 	int		bpp;
 	int		line_lenght;
 	int		endian;
+	t_fractal	*fractal;
 } 			t_graph;
 
 typedef struct s_fractal
@@ -49,7 +56,7 @@ typedef struct s_fractal
 	double	julia_const_re;
 	double	julia_const_im;
 	int		max_iter;
-	t_fractal_func calculate_fractal;;
+	t_fractal_func calculate_fractal;
 }			t_fractal;
 
 void	init_mandelbrot(t_fractal *fractal);

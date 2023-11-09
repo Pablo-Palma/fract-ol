@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:58:04 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:33:42 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:30:39 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void cleanup(t_graph *graph)
 {
-    if (graph->img) {
+    if (graph->img && graph->img) 
+	{
         mlx_destroy_image(graph->mlx, graph->img);
+		graph->win = NULL;
     }
-    if (graph->win) {
+    if (graph->win && graph->win)
+	{
         mlx_destroy_window(graph->mlx, graph->win);
+		graph->win = NULL;
     }
     exit(0);
 }

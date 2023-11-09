@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:45:18 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:29:50 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:59:54 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	calculate_mandelbrot(double re, double im, t_fractal *fractal)
 	double	old_im;
 	double	pr;
 	double	pi;
+	double	q;
 
 	i = 0;
 	old_re = 0;
@@ -39,6 +40,9 @@ int	calculate_mandelbrot(double re, double im, t_fractal *fractal)
 	new_im = 0;
 	pr = re;
 	pi = im;
+	q = (pr - 0.25) * (pr - 0.25) + pi * pi;
+	if ((q *(q + (pr - 0.25)) < 0.25 * pi * pi) || ((pr + 1) * pr + 1) + pi * pi < 0.0625)
+		return (fractal->max_iter);
 	while (i < fractal->max_iter)
 	{
 		old_re = new_re;
@@ -47,7 +51,7 @@ int	calculate_mandelbrot(double re, double im, t_fractal *fractal)
 		new_im = 2 * old_re * old_im + pi;
 		if ((new_re * new_re + new_im * new_im) > 4)
 			break;
-				i++;
+		i++;
 	}
 	return (i);
 }
