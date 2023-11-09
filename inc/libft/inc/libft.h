@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:24:17 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/10/25 08:37:41 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:20 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long value, int base);
 char	*ft_itoa_baseup(unsigned long value, int base);
+double	ft_atof(char *str);
 
 // Checks
 int		ft_isalnum(int c);
@@ -53,6 +54,8 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
+int		ft_isspace(int c);
+int		ft_skip_space_sign(char *str, int *is_neg);
 
 // Memory manipulation
 void	ft_bzero(void *s, size_t n);

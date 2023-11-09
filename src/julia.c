@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:04:44 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/08 12:27:03 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:37:20 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ void	init_julia(t_fractal *fractal)
 	fractal->max_im = 2.0;
 	fractal->max_iter = MAX_ITER;
 	fractal->calculate_fractal = calculate_julia;
-	fractal->julia_const_re = -0.7;
-	fractal->julia_const_im = 0.27015;
+	if (fractal->julia_const_re == UNSET_VALUE ||
+		fractal->julia_const_im == UNSET_VALUE)
+	{
+		fractal->julia_const_re = -0.7;
+		fractal->julia_const_im = 0.27015;
+	}
 }
 
 int	calculate_julia(double re, double im, t_fractal *fractal)

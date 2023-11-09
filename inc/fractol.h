@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 22:12:16 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 10:21:49 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:32:55 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -29,6 +29,7 @@
 #define KEY_RIGHT 124
 
 #define ITER_ADJ_FACTOR 100
+#define UNSET_VALUE -123456789.0
 
 typedef struct s_fractal t_fractal; // Forward declaration.
 
