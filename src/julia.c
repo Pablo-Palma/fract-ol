@@ -6,11 +6,25 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:04:44 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 12:37:20 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 09:48:19 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int julia_motion(int x, int y, t_graph *graph)
+{
+    t_fractal *fractal = graph->fractal;
+
+    if (fractal->julia_fixed)
+    {
+        fractal->julia_const_re = 4 * ((double)x / WIN_WIDTH - 0.5);
+        fractal->julia_const_im = 4 * ((double)(WIN_HEIGHT - y) / WIN_HEIGHT - 0.5);
+        draw_fractal(fractal, graph);
+        mlx_put_image_to_window(graph->mlx, graph->win, graph->img, 0, 0);
+    }
+    return (0);
+}
 
 void	init_julia(t_fractal *fractal)
 {

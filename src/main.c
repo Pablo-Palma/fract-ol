@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:53:36 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 14:28:24 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:36:10 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	check = 0;
 	fractal.julia_const_re = UNSET_VALUE;
 	fractal.julia_const_im = UNSET_VALUE;
+	fractal.julia_fixed = 0;
 	if (setup_gui(&graph) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	graph.fractal = &fractal;

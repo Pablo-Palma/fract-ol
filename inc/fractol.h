@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 22:12:16 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:16:11 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:12:41 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -27,6 +27,7 @@
 #define KEY_DOWN 125
 #define KEY_LEFT 123
 #define KEY_RIGHT 124
+#define KEY_SPACE 49
 
 #define ITER_ADJ_FACTOR 100
 #define UNSET_VALUE -123456789.0
@@ -45,6 +46,7 @@ typedef struct s_graph
 	int		bpp;
 	int		line_lenght;
 	int		endian;
+	int		color_mode;
 	t_fractal	*fractal;
 } 			t_graph;
 
@@ -57,6 +59,7 @@ typedef struct s_fractal
 	double	julia_const_re;
 	double	julia_const_im;
 	int		max_iter;
+	int		julia_fixed;
 	t_fractal_func calculate_fractal;
 }			t_fractal;
 
@@ -67,6 +70,7 @@ int calculate_mandelbrot(double re, double im, t_fractal *fractal);
 ///###   Julia's_set   ###////
 void	init_julia(t_fractal *fractal);
 int	calculate_julia(double re, double im, t_fractal *fractal);
+int julia_motion(int x, int y, t_graph *graph);
 
 ///###   Burning_ship_set   ###////
 void	init_burning_ship(t_fractal *fractal);

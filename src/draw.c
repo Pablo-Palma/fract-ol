@@ -6,24 +6,12 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:46:45 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:24:40 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:43:02 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-/*unsigned int	get_psy_color(int	iter)
-{
-	float	s_red = (int)(sin(0.1 * iter) + 1) * 127.5;
-	float	s_green = (int)(sin(0.2 * iter) + 1) * 127.5;
-	float	s_blue = (int)(sin(0.3 * iter) + 1) * 127.5;
-
-	int	red = (int)s_red;
-	int	green = (int)s_green;
-	int	blue = (int)s_blue;
-	return (red << 16) | (green << 8) | blue;
-}
-*/
+#include <pthread.h>
 
 unsigned int get_psy_color(int iteration)
 {
@@ -37,12 +25,24 @@ unsigned int get_psy_color(int iteration)
     return ((red << 16) | (green << 8) | blue);
 }
 
-
-int	get_color(int iter, int max_iter)
+int	get_color(int iter, int max_iter, t_graph *graph)
 {
+	unsigned int	color;
+	int				grey;
+
+	grey = 0;
 	if (iter == max_iter)
 		return (0x000000);
-	return (get_psy_color(iter));
+	color =  (get_psy_color(iter));
+	if (graph->color_mode == 1)
+		color = ~color & 0xFFFFFF;
+	else if (graph->color_mode == 2)
+	{
+		grey = (int)(0.299 * ((color >> 16) & 0xFF) + 0.587 * ((color >> 8)
+			& 0xFF) + 0.114 * (color & 0xFF));
+        color = (grey << 16) | (grey << 8) | grey;
+	}
+	return (color);
 }
 
 void	put_pixel_to_image(t_graph *graph, int x, int y, int color)
@@ -74,7 +74,7 @@ void	draw_fractal(t_fractal *fractal, t_graph *graph)
 			im = fractal->min_im + (fractal->max_im - fractal->min_im) * y / WIN_HEIGHT;
 
 			iter = fractal->calculate_fractal(re, im, fractal);
-			color = get_color(iter, fractal->max_iter);
+			color = get_color(iter, fractal->max_iter, graph);
 
 			put_pixel_to_image(graph, x, y, color);
 			x++;

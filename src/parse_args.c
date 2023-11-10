@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:12:55 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:30:56 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:47:47 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void help_message(void)
     ft_printf("  - ESC: Exit.\n");
     ft_printf("  - Arrow keys: Move around the fractal.\n");
     ft_printf("  - Mouse scroll: Zoom in and out.\n");
-    ft_printf("\nHappy Fractal Exploring!\n\n");
+	ft_printf("  - C: Change color modes.\n");
+   	ft_printf("\nHappy Fractal Exploring!\n\n");
+	ft_printf("\nFor more information or to report issues, visit [tu enlace de GitHub o página web].\n");
     exit(EXIT_FAILURE);
 }
 
