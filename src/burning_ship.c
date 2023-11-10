@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:02:45 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:21:06 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:41:31 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_burning_ship(t_fractal *fractal)
 
 int	calculate_burning_ship(double re, double im, t_fractal *fractal)
 {
-	int	i;
+	int		i;
 	double	new_re;
 	double	new_im;
 	double	old_re;
@@ -44,7 +44,7 @@ int	calculate_burning_ship(double re, double im, t_fractal *fractal)
 		new_re = fabs(new_re);
 		new_im = fabs(new_im);
 		if ((new_re * new_re + new_im * new_im) > 4)
-			break;
+			break ;
 		i++;
 	}
 	return (i);

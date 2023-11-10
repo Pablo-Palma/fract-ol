@@ -6,24 +6,33 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:04:44 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/10 09:48:19 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:18:12 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int julia_motion(int x, int y, t_graph *graph)
+void	init_julia_check(t_fractal *fractal)
 {
-    t_fractal *fractal = graph->fractal;
+	fractal->julia_const_re = UNSET_VALUE;
+	fractal->julia_const_im = UNSET_VALUE;
+	fractal->julia_fixed = 0;
+}
 
-    if (fractal->julia_fixed)
-    {
-        fractal->julia_const_re = 4 * ((double)x / WIN_WIDTH - 0.5);
-        fractal->julia_const_im = 4 * ((double)(WIN_HEIGHT - y) / WIN_HEIGHT - 0.5);
-        draw_fractal(fractal, graph);
-        mlx_put_image_to_window(graph->mlx, graph->win, graph->img, 0, 0);
-    }
-    return (0);
+int	julia_motion(int x, int y, t_graph *graph)
+{
+	t_fractal	*fractal;
+
+	fractal = graph->fractal;
+	if (fractal->julia_fixed)
+	{
+		fractal->julia_const_re = 4 * ((double)x / WIN_WIDTH - 0.5);
+		fractal->julia_const_im = 4 * ((double)(WIN_HEIGHT - y)
+				/ WIN_HEIGHT - 0.5);
+		draw_fractal(fractal, graph);
+		mlx_put_image_to_window(graph->mlx, graph->win, graph->img, 0, 0);
+	}
+	return (0);
 }
 
 void	init_julia(t_fractal *fractal)
@@ -34,8 +43,8 @@ void	init_julia(t_fractal *fractal)
 	fractal->max_im = 2.0;
 	fractal->max_iter = MAX_ITER;
 	fractal->calculate_fractal = calculate_julia;
-	if (fractal->julia_const_re == UNSET_VALUE ||
-		fractal->julia_const_im == UNSET_VALUE)
+	if (fractal->julia_const_re == UNSET_VALUE 
+		|| fractal->julia_const_im == UNSET_VALUE)
 	{
 		fractal->julia_const_re = -0.7;
 		fractal->julia_const_im = 0.27015;
@@ -58,9 +67,9 @@ int	calculate_julia(double re, double im, t_fractal *fractal)
 		old_re = new_re;
 		old_im = new_im;
 		new_re = old_re * old_re - old_im * old_im + fractal->julia_const_re;
-		new_im = 2 *old_re * old_im  + fractal->julia_const_im;
+		new_im = 2 * old_re * old_im + fractal->julia_const_im;
 		if ((new_re * new_re + new_im * new_im) > 4)
-			break;
+			break ;
 		i++;
 	}
 	return (i);

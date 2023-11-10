@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:53:36 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 19:36:10 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:17:51 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,15 @@ int	main(int argc, char **argv)
 	t_graph		graph;
 	int			check;
 
-	check = 0;
-	fractal.julia_const_re = UNSET_VALUE;
-	fractal.julia_const_im = UNSET_VALUE;
-	fractal.julia_fixed = 0;
+	check = (argc == 4 && ft_strncmp(argv[1], "Julia", 5) == 0);
+	init_julia_check(&fractal);
 	if (setup_gui(&graph) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	graph.fractal = &fractal;
-	if (argc == 4 && ft_strncmp(argv[1], "Julia", 5) == 0)
+	if (check)
 	{
 		fractal.julia_const_re = ft_atof(argv[2]);
 		fractal.julia_const_im = ft_atof(argv[3]);
-		check = 1;
 	}
 	if ((argc == 2 || check == 1) && select_fractal(argv[1], &fractal))
 	{
@@ -40,8 +37,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		help_message();
-//	cleanup(&graph);
-
 	return (EXIT_SUCCESS);
 }
-

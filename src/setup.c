@@ -6,25 +6,25 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:58:04 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/09 09:30:39 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:00:07 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void cleanup(t_graph *graph)
+void	cleanup(t_graph *graph)
 {
-    if (graph->img && graph->img) 
+	if (graph->img && graph->img) 
 	{
-        mlx_destroy_image(graph->mlx, graph->img);
+		mlx_destroy_image(graph->mlx, graph->img);
 		graph->win = NULL;
-    }
-    if (graph->win && graph->win)
+	}
+	if (graph->win && graph->win)
 	{
-        mlx_destroy_window(graph->mlx, graph->win);
+		mlx_destroy_window(graph->mlx, graph->win);
 		graph->win = NULL;
-    }
-    exit(0);
+	}
+	exit(0);
 }
 
 void	init_img(t_graph *graph)
@@ -36,7 +36,7 @@ void	init_img(t_graph *graph)
 		exit(EXIT_FAILURE);
 	}
 	graph->addr = mlx_get_data_addr(graph->img, &(graph->bpp),
-					&(graph->line_lenght), &(graph->endian));
+			&(graph->line_lenght), &(graph->endian));
 }
 
 int	setup_gui(t_graph *graph)
@@ -47,6 +47,6 @@ int	setup_gui(t_graph *graph)
 	graph->win = mlx_new_window(graph->mlx, WIN_WIDTH, WIN_HEIGHT, "Fract'ol");
 	if (!graph->win)
 		return (EXIT_FAILURE);
-	init_img(graph);	
+	init_img(graph);
 	return (EXIT_SUCCESS);
 }
