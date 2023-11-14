@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:58:04 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/10 13:00:07 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:43:37 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_img(t_graph *graph)
 	graph->img = mlx_new_image(graph->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!graph->img)
 	{
-		fprintf(stderr, "Error: mlx_new_image failed\n");
+		ft_putstr_fd("Error: mlx_new_image failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	graph->addr = mlx_get_data_addr(graph->img, &(graph->bpp),

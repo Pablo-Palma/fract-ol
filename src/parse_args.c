@@ -6,7 +6,7 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:12:55 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/10 12:56:56 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:01:54 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	help_message(void)
 	ft_printf("\t - Mandelbrot: Explore the famous Mandelbrot Set\n");
 	ft_printf("\t - Julia: Dive into the Julia Sets\n");
 	ft_printf("\t - Burning_ship: Take the helm in this sea of flames\n");
-	printf("\n");
+	ft_printf("\n");
 	print_julia_sets();
 	ft_printf("\nControls:\n");
 	ft_printf("  - ESC: Exit.\n");

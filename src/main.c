@@ -6,12 +6,17 @@
 /*   By: pabpalma <pabpalma>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:53:36 by pabpalma          #+#    #+#             */
-/*   Updated: 2023/11/10 14:17:51 by pabpalma         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:07:03 by pabpalma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/*void leaks()
+{
+	system("leaks -q fractol");
+}
+*/
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
