@@ -1,8 +1,6 @@
 # Fract-ol
 
-<p align="center">
-  <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/fract-ole.png" alt="Fract'ol fract-ol 42 project badge"/>
-</p>
+![Fract-ol Preview](https://github.com/mcombeau/mcombeau/blob/main/42_badges/fract-ole.png)
 
 ## Dive Into the Infinite
 Welcome to **Fract-ol**, an interactive journey through the mesmerizing world of fractals. Crafted with precision and artistic flair, this project invites you to explore the infinite complexity of Mandelbrot, Julia, and the fiery depths of the Burning Ship fractal.
